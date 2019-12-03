@@ -1,0 +1,29 @@
+{
+  "name": "skeppy-birthday-twitterbot",
+  "version": "1.0.0",
+  "description": "A Twitter bot that tweets how many days till skeppy's birthday",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheChicken14/skeppy-birthday-twitterbot.git"
+  },
+  "keywords": [
+    "birthday",
+    "twitter",
+    "birthday",
+    "bot",
+    "14"
+  ],
+  "author": "TheChicken",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheChicken14/skeppy-birthday-twitterbot/issues"
+  },
+  "homepage": "https://github.com/TheChicken14/skeppy-birthday-twitterbot#readme",
+  "dependencies": {
+    "twit": "^2.2.11"
+  }
+}
