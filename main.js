@@ -18,7 +18,7 @@ var getDifferenceDays = (firstDate, secondDate) => {
 setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
     if(date.getHours() === 15 && date.getMinutes() === 05){ // Check the time
-        date.senMonth(date.getMonth() + 1)
+        date.setMonth(date.getMonth() + 1)
         var days = getDifferenceDays(date, new Date(2020, 1, 17))
         tweet(days)
     }
