@@ -17,9 +17,9 @@ var getDifferenceDays = (firstDate, secondDate) => {
 //https://stackoverflow.com/questions/24741530/in-javascript-how-can-i-have-a-function-run-at-a-specific-time heheheheh
 setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 14 && date.getMinutes() === 40){ // Check the time
-        var actualDate = new Date(date.getFullYear(), date.getMonth() + 1, date.getDay())
-        var days = getDifferenceDays(actualDate, new Date(2020, 1, 17))
+    if(date.getHours() === 15 && date.getMinutes() === 05){ // Check the time
+        date.senMonth(date.getMonth() + 1)
+        var days = getDifferenceDays(date, new Date(2020, 1, 17))
         tweet(days)
     }
 }, 60000);
