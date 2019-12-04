@@ -1,7 +1,9 @@
 var Twit = require('twit');
+var config = require('./config.json')
+var twitConf = require('./twitter.js');
+var T = new Twit(twitConf);
 
-var config = require('./config.js');
-var T = new Twit(config);
+console.log('Bot has started!')
 
 var getDifferenceDays = (firstDate, secondDate) => {
     const oneDay = 24 * 60 * 60 * 1000; // hoursminutesseconds*milliseconds
@@ -15,10 +17,36 @@ var getDifferenceDays = (firstDate, secondDate) => {
 //https://stackoverflow.com/questions/24741530/in-javascript-how-can-i-have-a-function-run-at-a-specific-time heheheheh
 setInterval(function(){ // Set interval for checking
     var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 14 && date.getMinutes() === 0){ // Check the time
-        var days = getDifferenceDays(date, new Date(2020, 1, 17))
-        var tweet = `Skeppy's birthday is in ${days} days!`;
-        console.log(tweet)
-        T.post('statuses/update', { status: tweet }, tweeted);
+    if(date.getHours() === 14 && date.getMinutes() === 40){ // Check the time
+        var actualDate = new Date(date.getFullYear(), date.getMonth() + 1, date.getDay())
+        var days = getDifferenceDays(actualDate, new Date(2020, 1, 17))
+        tweet(days)
     }
 }, 60000);
+
+function tweet(days){
+    var tweetText = `Skeppy's birthday is in ${days} days!`;
+    console.log(tweetText)
+    T.post('statuses/update', { status: tweetText }, function(err, data, response) {
+        console.log(data)
+    })
+    return tweetText;
+}
+
+const http = require('http');
+const express = require('express');
+const app = express();
+app.use(express.json());
+app.get('/', function(req, res) {
+    res.type('json')
+    if(req.query.pass != config.pass)
+        return res.end(JSON.stringify({error: 401, message: "not authorized"}));
+    
+    var response = tweet(req.query.days)
+
+    res.end(JSON.stringify({success: true, tweet: response}));
+  });
+
+const server = http.createServer(app);
+const port = 1515;
+server.listen(port);

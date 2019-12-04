@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/TheChicken14/skeppy-birthday-twitterbot#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "twit": "^2.2.11"
   }
 }

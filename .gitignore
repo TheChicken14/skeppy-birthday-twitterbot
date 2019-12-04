@@ -104,4 +104,5 @@ dist
 .tern-port
 
 # config files
-config.js
+config.json
+twitter.js
