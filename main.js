@@ -10,7 +10,7 @@ var getDifferenceDays = (firstDate, secondDate) => {
     /*const firstDate = new Date(2019, 1, 12);
     const secondDate = new Date(2019, 1, 22);*/
 
-    const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+    const diffDays = Math.ceil((secondDate.getTime()-firstDate.getTime())/(one_day))
     return diffDays;
 }
 
